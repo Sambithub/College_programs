@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence Generator</title>
+</head>
+<body>
+    <h1>Fibonacci Sequence Generator</h1>
+    <p>Enter the number of terms:</p>
+    
+    <input type="number" id="terms" placeholder="Enter a positive integer">
+    <button onclick="generateFibonacci()">Generate</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function generateFibonacci() {
+            const terms = parseInt(document.getElementById("terms").value);
+            const resultElement = document.getElementById("result");
+            
+            if (isNaN(terms) || terms <= 0) {
+                resultElement.textContent = "Please enter a valid positive integer.";
+                return;
+            }
+            const fibonacci = [];
+            for (let i = 0; i < terms; i++) {
+                if (i === 0 || i === 1) {
+                    fibonacci.push(i);
+                } else {
+                    fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+                }
+            }
+            resultElement.textContent = `Fibonacci Sequence (${terms} terms): ${fibonacci.join(", ")}`;
+        }
+    </script>
+</body>
+</html>
